@@ -1,0 +1,10 @@
+/* Local fixes on top of the compiled devel bundle — not part of the original build. */
+
+/* The compiled bundle's base font stack falls back to "Noto Sans CJK KR" for CJK
+   glyphs, which renders Japanese copy with Korean-style Han glyph shapes (the
+   classic Han-unification mismatch). This page only ever shows EN or JA copy —
+   never Korean — so Noto Sans JP is safe to put first for everyone. */
+:root,
+.mobile-canvas {
+  font-family: "Noto Sans JP", "Noto Sans", "Noto Sans CJK KR", Arial, sans-serif;
+}
