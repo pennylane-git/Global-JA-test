@@ -84,9 +84,14 @@ body.mobile-preview-active {
   background: #ffffff;
 }
 body.mobile-preview-active #root {
-  width: 360px;
   min-height: 600px;
 }
+/* The mobile canvas is genuinely fluid now (see assets/mobile-fluid-scale.js):
+   it stays laid out at its native 360px design width/positions — nothing
+   below is touched — and gets `transform:scale()`'d as one unit so it
+   fills the actual viewport, top:left origin, same way you'd scale a
+   fixed-size device mockup up or down. That script also sizes #root to
+   match the scaled box so the page doesn't clip or leave dead space. */
 .mobile-canvas {
   width: 360px;
   height: 600px;
