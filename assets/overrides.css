@@ -221,7 +221,12 @@ body.mobile-preview-active #root {
   font-size: 24px;
   line-height: normal;
   letter-spacing: -0.5px;
-  width: 281px;
+  /* Measured: line 2 ("ビジネスをよりスムーズに", 12 chars) needs 280.3px at
+     this size — the redline's halved 281px left 0.7px of margin, which
+     wrapped the last character on a real device's font rendering. Auto
+     removes the guesswork; .mobile-hero__copy's align-items:center still
+     centers it. */
+  width: auto;
 }
 .mobile-hero h1.is-ja + p {
   margin-top: 37.5px;
