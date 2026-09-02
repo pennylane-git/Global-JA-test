@@ -35,6 +35,14 @@
   line-height: 52px;
   letter-spacing: -0.7px;
   margin-top: 48px;
+  width: 832px;
+}
+/* h1 and p are siblings inside .hero-text — h1 gets .is-ja per language, p
+   doesn't, so target it via the sibling that does carry the flag. Redline
+   gives p a different fixed width per language (832px EN / 982px JA);
+   .hero-text's align-items:center (flex-direction:column) centers it. */
+.hero-copy h1.is-ja + p {
+  width: 982px;
 }
 .hero-cta {
   margin-top: 64px;
