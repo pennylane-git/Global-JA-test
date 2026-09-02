@@ -81,6 +81,7 @@
    patched directly in assets/index-DuQq82ST.js to width=360 instead. */
 body.mobile-preview-active {
   min-width: 360px;
+  background: #ffffff;
 }
 body.mobile-preview-active #root {
   width: 360px;
