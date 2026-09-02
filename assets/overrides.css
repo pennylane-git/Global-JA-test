@@ -84,29 +84,15 @@ body.mobile-preview-active {
   background: #ffffff;
 }
 body.mobile-preview-active #root {
+  width: 360px;
   min-height: 600px;
 }
-/* Genuinely fluid the way the real production site (us.business.kakao.com)
-   actually does it — confirmed directly: at an 800px viewport its mobile
-   .visual_container is 785px wide (fluid) but .tit_visual stays 33px
-   (unchanged font-size, fixed at the max-width:900px breakpoint value).
-   Width tracks the viewport; text size, line-height, letter-spacing and
-   vertical gaps do not — the opposite of the earlier transform:scale()
-   attempt (mobile-fluid-scale.js, removed), which scaled both axes
-   together and visually enlarged/cropped text instead of just giving it
-   more room. Canvas/gnb/hero/hero__copy go width:100%; everything
-   text-related keeps its fixed halved value; decorative raster assets
-   (bridge graphic, channel-card mockup — flat PNGs baked with their own
-   text, not real HTML, so they can't "reflow") stay at fixed native size,
-   centered, rather than stretching and enlarging; header icons that
-   assumed a fixed 360px parent are re-anchored to the right edge (right:
-   instead of left:) so they track it at any width. */
 .mobile-canvas {
-  width: 100%;
+  width: 360px;
   height: 600px;
 }
 .mobile-gnb {
-  width: 100%;
+  width: 360px;
   height: 50px;
 }
 .mobile-wordmark {
@@ -117,8 +103,7 @@ body.mobile-preview-active #root {
 }
 .mobile-language {
   top: 15px;
-  left: auto;
-  right: 54px;
+  left: 239.5px;
 }
 .mobile-language__trigger {
   border-width: 1px;
@@ -159,8 +144,7 @@ body.mobile-preview-active #root {
 }
 .mobile-navigation {
   top: 13.5px;
-  left: auto;
-  right: 16px;
+  left: 314px;
 }
 .mobile-navigation__trigger {
   border-radius: 7px;
@@ -185,12 +169,12 @@ body.mobile-preview-active #root {
   font-size: 11px;
 }
 .mobile-hero {
-  width: 100%;
+  width: 360px;
   height: 350px;
   top: 53.5px;
 }
 .mobile-hero__copy {
-  width: 100%;
+  width: 360px;
   height: 165px;
   top: 60px;
   /* was gap:42px (halved: 21px) — zeroed and applied as an explicit
@@ -215,15 +199,12 @@ body.mobile-preview-active #root {
   width: 187px;
   height: 34px;
   top: 246px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 86.5px;
 }
 .mobile-channel-card {
   width: 360px;
   height: 190px;
   top: 403.5px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 .mobile-channel-card img {
   width: 360px;
