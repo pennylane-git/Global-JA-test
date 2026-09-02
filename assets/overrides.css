@@ -8,3 +8,46 @@
 .mobile-canvas {
   font-family: "Noto Sans JP", "Noto Sans", "Noto Sans CJK KR", Arial, sans-serif;
 }
+
+/* PC hero spacing/type, corrected against the design redline (EN_PC / JA_PC):
+   container-top -> h1 200px, h1 -> p 48px, p -> button 64px, button -> next
+   section 138px; h1 line-height 108px / letter-spacing -0.2px in both
+   languages (font-size stays per-language: 84px EN, 64px JA); p is
+   28px/52px/-0.7px in both languages. The compiled bundle centered this
+   block with a fixed-height flex trick (hero-text height:300 + translateY);
+   swapped for an explicit top-anchored stack so the 200px gap is exact. */
+.hero-copy {
+  justify-content: flex-start;
+  transform: none;
+  padding-top: 200px;
+}
+.hero-text {
+  height: auto;
+  flex: none;
+}
+.hero-copy h1,
+.hero-copy h1.is-ja {
+  line-height: 108px;
+  letter-spacing: -0.2px;
+}
+.hero-copy p {
+  font-size: 28px;
+  line-height: 52px;
+  letter-spacing: -0.7px;
+  margin-top: 48px;
+}
+.hero-cta {
+  margin-top: 64px;
+}
+
+/* .tobe's inline height:680px + overflow:hidden clipped the button once the
+   stack above grew to match the redline (two-line h1 alone is 232px, not the
+   108px of a single line) — button bottom now lands at ~730px. Every direct
+   child (.hero-video, header, .hero-copy) is position:absolute, so height:auto
+   collapses to nothing here — has to be an explicit number, not auto. 730px
+   content + 60px bottom buffer (no next section exists yet to define this
+   precisely; adjust once the cards section is added). */
+.tobe {
+  height: 790px !important;
+  overflow: visible !important;
+}
