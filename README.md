@@ -11,6 +11,20 @@ Not indexed by search engines (`robots.txt` + `noindex` meta) — link-only.
 Defaults to Japanese on load; use the language switcher (top right) to
 compare against English.
 
+This is the only repo for this project — it doubles as both the working
+source and the GitHub Pages deploy (paths are relative throughout, so it
+works the same served from `/` locally or from the `/Global-JA-test/`
+Pages subpath).
+
+## Run it locally
+
+```bash
+python3 serve.py
+```
+
+Then open `http://localhost:8747/` (desktop) or add `?view=mobile` for
+the mobile layout.
+
 ## What's been tested here
 
 - **EN/JA language toggle** — hover-opens a dropdown (top right on desktop,
@@ -26,9 +40,13 @@ compare against English.
 - **Hero video** — the white gradient wash over the desktop video has been
   removed so uploaded footage renders at its true brightness
 
-## Source
+## Notes
 
-The private working repo (source code, asset originals, commit history)
-is [`bridge-visual-clone`](https://github.com/pennylane-git/bridge-visual-clone).
-This repo is a deploy-only mirror of it with paths rewritten to work from
-a GitHub Pages project subpath.
+- `assets/index-DuQq82ST.js` / `assets/index-Dps4L0yt.css` are the
+  compiled build output from the devel prototype (minified), not editable
+  component source — everything else in `assets/` (the `overrides.css`,
+  the small `*.js` behavior patches, and the media files) is what's
+  actually maintained here.
+- `default-lang-ja.js` is specific to this deploy (defaults the language
+  switcher to JA on load); it's the only file here that wouldn't belong
+  in a plain 1:1 mirror of the devel site.
