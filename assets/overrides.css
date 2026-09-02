@@ -51,3 +51,10 @@
   height: 790px !important;
   overflow: visible !important;
 }
+
+/* The compiled bundle overlays the hero video with a white gradient
+   (linear-gradient(#ffffff1a, #ffffff38)) via .hero-video:after, which washes
+   the uploaded video out lighter than the source file. Removed per request. */
+.hero-video:after {
+  display: none;
+}
