@@ -66,3 +66,169 @@
 .hero-video:after {
   display: none;
 }
+
+/* Mobile canvas, halved throughout. The EN_MO/JA_MO redline turned out to be
+   authored at 2x — every number in it (and, it turns out, every mobile
+   dimension already in the compiled bundle: canvas 720x1200, hero 720x700,
+   h1 66px, etc.) is 2x the real CSS value. Halving only the hero text would
+   leave a tiny headline stranded inside a still-720px canvas with 2x-sized
+   gaps around it, so this rescales every .mobile-* rule uniformly instead —
+   canvas 720->360, gnb 100->50, language switcher, nav menu, hero, bridge
+   graphic, channel card, all divided by 2 — so the whole component stays
+   internally consistent. The bundle also force-sets
+   <meta viewport content="width=720"> in a useEffect when mobile mode
+   mounts (after this stylesheet loads, so a CSS-only fix can't catch it) —
+   patched directly in assets/index-DuQq82ST.js to width=360 instead. */
+body.mobile-preview-active {
+  min-width: 360px;
+}
+body.mobile-preview-active #root {
+  width: 360px;
+  min-height: 600px;
+}
+.mobile-canvas {
+  width: 360px;
+  height: 600px;
+}
+.mobile-gnb {
+  width: 360px;
+  height: 50px;
+}
+.mobile-wordmark {
+  width: 141.5px;
+  height: 17px;
+  top: 20px;
+  left: 20px;
+}
+.mobile-language {
+  top: 15px;
+  left: 239.5px;
+}
+.mobile-language__trigger {
+  border-width: 1px;
+  border-radius: 499.5px;
+  gap: 5px;
+  width: 66.5px;
+  height: 27px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+.mobile-language__trigger > img:first-child {
+  width: 14px;
+  height: 14px;
+}
+.mobile-language__arrow {
+  width: 11px;
+  height: 11px;
+  right: 8px;
+}
+.mobile-language__menu {
+  border-radius: 7px;
+  gap: 4px;
+  width: 101px;
+  padding: 8.5px;
+  top: 32.5px;
+  box-shadow: 0 3px 10px #0000001a;
+}
+.mobile-language__menu button {
+  border-radius: 4px;
+  gap: 6px;
+  width: 84px;
+  height: 28.5px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+.mobile-language__menu strong {
+  width: 16.5px;
+}
+.mobile-navigation {
+  top: 13.5px;
+  left: 314px;
+}
+.mobile-navigation__trigger {
+  border-radius: 7px;
+  width: 30px;
+  height: 30px;
+}
+.mobile-navigation__trigger img {
+  width: 16px;
+  height: 16px;
+}
+.mobile-navigation__menu {
+  border-radius: 8px;
+  width: 140px;
+  padding: 6px;
+  top: 35px;
+  box-shadow: 0 4px 12px #0000001f;
+}
+.mobile-navigation__menu button {
+  border-radius: 4px;
+  height: 29px;
+  padding: 0 9px;
+  font-size: 11px;
+}
+.mobile-hero {
+  width: 360px;
+  height: 350px;
+  top: 53.5px;
+}
+.mobile-hero__copy {
+  width: 360px;
+  height: 165px;
+  top: 60px;
+  /* was gap:42px (halved: 21px) — zeroed and applied as an explicit
+     margin-top on p instead, since JA needs a different h1->p gap than EN
+     and flex `gap` can only hold one value for both children. */
+  gap: 0;
+}
+.mobile-hero h1 {
+  letter-spacing: -0.5px;
+  gap: 8px;
+  font-size: 33px;
+  line-height: 44.95px;
+}
+.mobile-hero p {
+  letter-spacing: -0.1px;
+  width: 300px;
+  font-size: 14px;
+  line-height: 23px;
+  margin-top: 21px;
+}
+.mobile-hero__bridge {
+  width: 187px;
+  height: 34px;
+  top: 246px;
+  left: 86.5px;
+}
+.mobile-channel-card {
+  width: 360px;
+  height: 190px;
+  top: 403.5px;
+}
+.mobile-channel-card img {
+  width: 360px;
+  height: 190px;
+}
+
+/* JA-specific hero type/spacing (also halved from the redline: 48/75/26/50
+   -> 24/37.5/13/25). h1 gets .is-ja from React; p doesn't, so it's targeted
+   via the sibling selector. Both languages independently land the bridge
+   graphic at the same top:246px (EN: 60 + 98 + 21 + 46 + 21 = 246; JA:
+   60 + 78 + 37.5 + 50 + 20.5 = 246), so the graphic itself needs no
+   per-language override. */
+.mobile-hero h1.is-ja {
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  width: 281px;
+}
+.mobile-hero h1.is-ja + p {
+  margin-top: 37.5px;
+  font-size: 13px;
+  line-height: 25px;
+  /* compiled bundle's width was sized for EN's pre-line segments; at this
+     size the JA first line doesn't fit and wraps a second time, pushing a
+     3rd line into space meant for 2 and overlapping the graphic below. */
+  width: auto;
+  max-width: 340px;
+}

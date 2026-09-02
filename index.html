@@ -7,7 +7,12 @@
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <link rel="icon" href="mobile-assets/menu.svg" />
     <title>Kakao Business</title>
-    <script type="module" crossorigin src="assets/index-DuQq82ST.js"></script>
+    <!-- local-only fix: picks the mobile component at tablet-and-below widths
+         instead of only via ?view=mobile — must run before the module script
+         below, which reads location.search once at import time; see
+         assets/responsive-view-switch.js -->
+    <script src="assets/responsive-view-switch.js"></script>
+    <script type="module" crossorigin src="assets/index-DuQq82ST.js?v=2"></script>
     <link rel="stylesheet" crossorigin href="assets/index-Dps4L0yt.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
