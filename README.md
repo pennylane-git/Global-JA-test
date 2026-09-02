@@ -1,52 +1,49 @@
 # Global JA Test
 
-Live review deploy for the Kakao Business global intro hero prototype
-(mirrored from `global-business-page.devel.kakao.com`), used to test
-EN/JA copy, spacing against the design redline, and hero video swaps
-without touching the devel deployment.
+Kakao Business 글로벌 소개 히어로 프로토타입(`global-business-page.devel.kakao.com`을
+미러링)의 라이브 검토용 배포입니다. devel 배포에 손대지 않고 EN/JA 카피, 디자인
+레드라인 대비 간격, 히어로 영상 교체 등을 테스트하는 용도입니다.
 
-**Live URL:** https://pennylane-git.github.io/Global-JA-test/
+**라이브 URL:** https://pennylane-git.github.io/Global-JA-test/
 
-Not indexed by search engines (`robots.txt` + `noindex` meta) — link-only.
-Defaults to Japanese on load; use the language switcher (top right) to
-compare against English.
+검색엔진에 노출되지 않습니다(`robots.txt` + `noindex` meta) — 링크를 아는 사람만
+접근 가능합니다. 기본 언어는 일본어이며, 우상단 언어 토글로 영어와 비교해볼 수
+있습니다.
 
-This is the only repo for this project — it doubles as both the working
-source and the GitHub Pages deploy (paths are relative throughout, so it
-works the same served from `/` locally or from the `/Global-JA-test/`
-Pages subpath).
+이 프로젝트의 유일한 저장소입니다 — 로컬 작업용 소스와 GitHub Pages 배포를
+겸합니다(경로가 전부 상대경로라 로컬에서 `/`로 서빙하든 Pages의
+`/Global-JA-test/` 서브경로로 서빙하든 동일하게 동작합니다).
 
-## Run it locally
+## 로컬 실행
 
 ```bash
 python3 serve.py
 ```
 
-Then open `http://localhost:8747/` (desktop) or add `?view=mobile` for
-the mobile layout.
+이후 `http://localhost:8747/`(데스크톱)을 열거나, 모바일 레이아웃을 보려면
+`?view=mobile`을 붙이면 됩니다.
 
-## What's been tested here
+## 이 저장소에서 검증한 내용
 
-- **EN/JA language toggle** — hover-opens a dropdown (top right on desktop,
-  same trigger in the mobile header), swaps headline/description/CTA copy
-  and the hero background video for both breakpoints
-- **Desktop hero spacing/type** — matched against the EN_PC/JA_PC design
-  redline (gaps, headline line-height/letter-spacing, description width)
-- **Mobile hero** — matched against the EN_MO/JA_MO redline; has its own
-  dedicated background video per language
-- **Responsive breakpoint** — resizing the window across ~900px switches
-  between the desktop and mobile layouts automatically (no `?view=mobile`
-  query param needed)
-- **Hero video** — the white gradient wash over the desktop video has been
-  removed so uploaded footage renders at its true brightness
+- **EN/JA 언어 토글** — 데스크톱은 우상단, 모바일은 헤더의 동일 버튼에서
+  마우스 오버 시 드롭다운이 열리며, 헤드라인/설명문/CTA 카피와 히어로
+  배경 영상이 두 브레이크포인트 모두에서 함께 전환됩니다
+- **데스크톱 히어로 간격/타이포** — EN_PC/JA_PC 디자인 레드라인 기준으로
+  간격, 헤드라인 line-height/letter-spacing, 설명문 폭을 맞췄습니다
+- **모바일 히어로** — EN_MO/JA_MO 레드라인 기준으로 맞췄고, 언어별로
+  별도의 배경 영상을 사용합니다
+- **반응형 브레이크포인트** — 창 너비가 약 900px를 넘나들면 `?view=mobile`
+  쿼리 없이도 데스크톱/모바일 레이아웃이 자동으로 전환됩니다
+- **히어로 영상** — 데스크톱 영상에 걸려있던 흰색 그라데이션 오버레이를
+  제거해서, 업로드한 영상이 원본 밝기 그대로 보이도록 했습니다
 
-## Notes
+## 참고
 
-- `assets/index-DuQq82ST.js` / `assets/index-Dps4L0yt.css` are the
-  compiled build output from the devel prototype (minified), not editable
-  component source — everything else in `assets/` (the `overrides.css`,
-  the small `*.js` behavior patches, and the media files) is what's
-  actually maintained here.
-- `default-lang-ja.js` is specific to this deploy (defaults the language
-  switcher to JA on load); it's the only file here that wouldn't belong
-  in a plain 1:1 mirror of the devel site.
+- `assets/index-DuQq82ST.js` / `assets/index-Dps4L0yt.css`는 devel
+  프로토타입의 컴파일된 빌드 결과물(minified)이라 직접 수정 가능한
+  컴포넌트 소스가 아닙니다 — `assets/` 안의 나머지(`overrides.css`,
+  작은 동작 패치용 `*.js` 파일들, 미디어 파일)가 실제로 관리되는
+  부분입니다
+- `default-lang-ja.js`는 이 배포본에만 해당하는 파일입니다(로드 시
+  언어 토글을 JA로 기본 설정) — devel 사이트를 그대로 1:1 미러링한다면
+  없어도 되는 유일한 파일입니다
