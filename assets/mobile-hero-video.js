@@ -7,8 +7,9 @@
   // relationship), without touching the compiled bundle.
   //
   // Source file is 720x350 (2x, per the redline convention this whole
-  // mobile canvas uses) -> displayed at 360x175. "Y position 50" from the
-  // guide halves to top:25px within .mobile-hero.
+  // mobile canvas uses) -> displayed at 360x175. .mobile-hero already
+  // starts below the gnb, so within it the video sits at Y:0 (flush with
+  // the section's own top), not offset further down.
   var SRC = "assets/home_visual_mo.mp4";
 
   function insert() {
@@ -26,7 +27,7 @@
     video.muted = true;
     video.playsInline = true;
     video.style.cssText =
-      "position:absolute;top:25px;left:50%;transform:translateX(-50%);" +
+      "position:absolute;top:0;left:50%;transform:translateX(-50%);" +
       "width:360px;height:175px;object-fit:contain;pointer-events:none;";
 
     var source = document.createElement("source");
